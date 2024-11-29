@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+.task-view {
+    padding: 15px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: left;
+    font-size: 38px;
+    margin-bottom: 182px;
+}
+.btn {
+    border-radius: 10px;
+    background-color: #2a9d8f;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    padding: 12px 28px;
+
+}
+.end-button {
+    float: left;
+    padding: 40px;
+}
+</style>
+
+
+<div class="end-button">
+    <a href="{% url 'list' %}" class="btn btn-primary">Go Back</a>
+</div>
+<br>
+<div class="task-view">
+    <h1> Tasks: {{ task }} </h1>
+    <h2> Descr.: {{ task.text }}</h2>
+    <h2> Completed? {{ task.completed }}</h2>
+</div>
+
+{% endblock %}
+
+</body>
+</html>

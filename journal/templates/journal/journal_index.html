@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+img {
+    width: 100%;
+    height: 100%;
+}
+
+h2 {
+    margin-top: 80px;
+    font-size: 32px;
+    font-weight: 600;
+    padding: 5px;
+    color: black;
+    font-family: 'Quicksand', sans-serif;
+}
+button {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    font-family: 'Comfortaa', cursive;
+    padding: 12px 28px;
+    float: right;
+}
+a {
+    color: #0b525b;
+    font-weight: bold;
+}
+p {
+    margin: 5px;
+    padding: 20px;
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+    overflow: hidden; /* Hide overflow */
+    max-height: 100px; /* Max height to show initially */
+    transition: max-height 0.3s ease; /* Smooth transition */
+}
+.journal-entry {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    background-color: #f8f9fa;
+    position: relative;
+    display: block;
+}
+.end-button {
+    float: right;
+    padding: 40px;
+}
+h1{ 
+    font-family: 'Questrial', sans-serif;
+    color: #52b788;
+    text-align: center;
+    padding: 25px;
+    margin-top: 15px;
+    font-size: 68px;
+    font-weight: bold;
+}
+</style>
+
+<img src="{% static 'img/details-1-background.jpg' %}" class="img-fluid" alt="...">
+
+<h1> Travel Journal </h1>
+
+<div class="end-button">
+    <button><a href="{% url 'add_entry' %}" class=""> Add new entry</a></button>
+</div>
+<div class="container">
+    <div class="journal-entry">
+
+        {% for entry in entries %}
+
+            <h2>{{ entry.place }}</h2>
+
+             <em>{{ entry.date|date:"F d, Y" }}</em>
+
+            <p class="entry-content">{{ entry.notes }}</p>
+
+            <button class="toggle-content read-more">Read More</button>
+            <button><a href="{% url 'edit_entry' entry.id %}">Edit</a></button>
+
+        {% endfor %}
+     </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(".toggle-content").click(function() {
+        var $content = $(this).prev(".entry-content");
+        if ($content.css("max-height") == "none") {
+            $content.css("max-height", "100px");
+            $(this).text("Read More");
+        } else {
+            $content.css("max-height", "none");
+            $(this).text("Read Less");
+        }
+    });
+});
+</script>
+
+{% endblock %}
+</body>
+</html>

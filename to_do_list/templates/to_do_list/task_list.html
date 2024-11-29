@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+body {
+    background-image: url("{% static 'img/pexels-taryn-elliott-3889991.jpg' %}");
+}
+h1{
+    font-family: 'Questrial', sans-serif;
+    color: #56667a;
+    text-align: center;
+    padding: 45px;
+    font-size: 68px;
+    font-weight: bold;
+    text-shadow: 2px 2px #ccd5ae;
+}
+.search-option{
+    padding: 35px;
+    margin:-bottom: 25px;
+    width: 100%;
+}
+.center-column {
+    width:600px;
+    margin: 20px;
+    padding:20px;
+    border-radius: 3px;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    font-weight: 600;
+}
+.btn {
+    border-radius: 10px;
+    background-color: #2a9d8f;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    padding: 10px 24px;
+    float: right;
+}
+.end-button {
+    float: right;
+    padding: 40px;
+}
+
+
+</style>
+
+    <h1> To Do Items </h1>
+
+<div class="container">
+    <a href="{% url 'create' %}" class="btn btn-primary">Add item</a>
+
+    <div class="search-option">
+        <form method="get" action="">
+            <input type="text" name="search-area" value="{{ search_input }}">
+            <input type="submit" value="Search">
+        </form>
+    </div>
+</div>
+
+<div class="container">
+    <table class="center-column ">
+        {% for task in tasks %}
+        <tr>
+            <td>{{ task.title }}</td>
+            <td><a href="{% url 'task' task.id %}" class="btn btn-primary">View</a></td>
+            <td><a href="{% url 'edit' task.id %}" class="btn btn-primary">Edit</a></td>
+            <td><a href="{% url 'delete' task.id %}" class="btn btn-primary">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</div>
+
+{% endblock %}
+
+</body>
+</html>

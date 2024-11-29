@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+<style>
+h1 {
+  font-family: 'Questrial', sans-serif;
+  color: purple;
+  text-align: center;
+  padding: 55px;
+  margin-bottom: 50px;
+  font-size: 68px;
+  font-weight: bold;
+}
+
+h2 {
+  color: purple;
+  text-align: center;
+  padding: 15px;
+  font-family: 'Quicksand', sans-serif;
+  font-weight: bold;
+}
+
+p {
+  text-align: center;
+  margin-bottom: 0px;
+  justify-content: center;
+  font-family: 'Quicksand', sans-serif;
+}
+
+img {
+  width: 100%;
+  height: 80%;
+}
+
+.container {
+  display: block;
+}
+
+.features-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.features-section h2 {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 600;
+  color: purple;
+}
+
+.features-section ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.features-section li {
+  color: white;
+  text-align: center;
+}
+</style>
+
+<h1>Travel Journal Website</h1>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <img src="{% static 'img/annie-spratt-X_NiqkkzVgM-unsplash_copy.jpg' %}">
+    </div>
+    <div class="col">
+      <h2>Welcome to Your Travel Journal</h2>
+      <p>"Welcome to your Travel Journal, a personal space where you can capture the essence of your journeys and adventures. This is your sanctuary, a digital diary that holds the memories of the places you've visited, the experiences you've had, and the stories that have shaped your travels. From the bustling streets of big cities to the tranquil beauty of hidden gems, every entry here is a testament to your love for exploration and discovery."</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h2>Capture and Share Your Journey, Document, Explore, and Relive Your Travels</h2>
+      <p>"Here, you can document the details that make each trip special, the vibrant cultures, the diverse cuisines, the breathtaking landscapes, and the unforgettable moments. Your Travel Journal is not just a record of where you've been, but a reflection of your journey through life, filled with personal insights, reflections, and inspirations. This is where you come to relive your adventures and plan future escapades, keeping the spirit of wanderlust alive within you."</p>
+    </div>
+    <div class="col">
+      <img src="{% static 'img/luca-bravo-ny6qxqv_m04-unsplash.jpg' %}">
+    </div>
+  </div>
+  
+  <!-- Features Section -->
+  <div class="features-section">
+    <h2>About the Website</h2>
+    <h5>
+    <p><b>The website features:</b></p>
+      <p>
+      Home is the main page with an overview of the Travel Journal, Login is the page for registered users to log into their accounts, Signup is a age for new users to create an account, To Do List allows users to manage their travel plans and tasks, Journal is used to write and store travel experiences, Travel Album is used to store and display travel photos, Logout helps to log out from the current session.
+      </p>
+    </h5>
+  </div>
+
+<br>
+<br>
+<br>
+</div>
+
+{% endblock %}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+
+{% block content %}
+
+<style>
+button {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    font-family: 'Comfortaa', cursive;
+    padding: 12px 28px;
+    float: right;
+}
+.end-button {
+    float: right;
+    padding: 40px;
+}
+.add-entry {
+    padding: 120px;
+}
+
+</style>
+
+<div class="end-button">
+    <button><a href="{% url 'entry' %}" class=""> Go Back</a></button>
+</div>
+
+<div class="container">
+    <div class="add-entry">
+    <div class="row justify-content-center">
+        <div class="col-9">
+            <div class="card">
+                <div class="form group m-3">
+                    <form method="post" action="">
+                      {% csrf_token %}
+
+                        {{ form.as_p }}
+                        <input type="submit" value="Add">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+</div>
+{% endblock %}
+</body>
+</html>

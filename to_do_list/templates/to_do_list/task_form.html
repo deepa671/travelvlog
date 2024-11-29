@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+
+.btn {
+    background-color: #2a9d8f;
+    color: white;
+    padding: 5px 25px;float: right;
+    font-family: 'Comfortaa', cursive;
+
+}
+.task-form {
+    padding: 25px;
+}
+
+</style>
+
+<div class="container">
+    <div class="task-form">
+        <a href="{% url 'list' %}" class="btn btn-primary">Go Back</a>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form method="post" action="">
+                {% csrf_token %}
+                    {{ form.as_p }}
+
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </form>
+        </div>
+    </div>
+    </div>
+</div>
+{% endblock %}
+
+</body>
+</html>

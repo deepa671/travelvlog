@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static%}
+
+<style>
+
+h1 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 65px;
+    padding: 40px;
+}
+
+.btn {
+    font-size: 40px;
+    background-color: #2a9d8f;
+    color: white;
+}
+.task-deletion {
+    padding: 20px;
+}
+</style>
+
+<div class="container">
+    <div class="task-deletion">
+
+        <form method="post" action="{% url 'delete' task.id %}">
+            {% csrf_token %}
+            <h1> Are you sure you want to delete item? </h1>
+            <input type="submit" class="btn btn-primary" value="Yes">
+            <a href="{% url 'list' %}" class="btn btn-primary">No</a>
+
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+</body>
+</html>

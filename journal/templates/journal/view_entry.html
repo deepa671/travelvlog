@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+button {
+    border-radius: 10px;
+    background-color: #f8f9fa;
+    font-family: 'Comfortaa', cursive;
+    padding: 12px 28px;
+    float: right;
+}
+.end-button {
+    float: right;
+    padding: 40px;
+}
+.entry-view {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    position: relative;
+    color: black;
+    font-family: 'Quicksand', sans-serif;
+}
+</style>
+
+<div class="end-button">
+    <button><a href="{% url 'entry' %}" class=""> Go Back</a></button>
+</div>
+<div class="container">
+    <div class="entry-view">
+        <strong>{{ entry.place }}</strong>
+        <br>
+        <p>{{ entry.notes }}</p>
+        <p>{{ entry.date }}</p>
+    </div>
+</div>
+
+{% endblock %}
+
+</body>
+</html>

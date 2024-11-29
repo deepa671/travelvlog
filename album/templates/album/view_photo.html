@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+
+.btn {
+    border-radius: 10px;
+    background-color: #2a9d8f;
+    color: white;
+    font-family: 'Comfortaa', cursive;
+    padding: 12px 28px;
+    float: right;
+}
+.end-button {
+    float: right;
+    padding: 40px;
+}
+img {
+    position: relative;
+    padding: 15px;
+    max-width: 100%;
+}
+.photo-view {
+    padding: 15px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: left;
+    font-size: 38px;
+}
+
+</style>
+<div class="end-button">
+    <a href="{% url 'all' %}" class="btn btn-primary"> Go Back</a>
+</div>
+
+{% if image.picture %}
+    <img src="{{ image.picture.url }}">
+{% else %}
+    <p>No image available</p>
+{% endif %}
+
+<div class="photo-view">
+    <p>Category: {{ image.category.name }}</p>
+    <p>Description: {{ image.description }}</p>
+</div>
+
+{% endblock %}
+
+</body>
+</html>

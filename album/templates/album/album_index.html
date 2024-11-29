@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+h1{ 
+    font-family: 'Questrial', sans-serif;
+    color: #52b788;
+    text-align: center;
+    padding: 25px;
+    margin-top: 15px;
+    font-size: 68px;
+    font-weight: bold;
+}
+
+.card{
+    padding: 15px;
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    font-size: 18px;
+}
+
+.list-group-item{
+    background-color: #022b3a;
+    font-family: 'Quicksand', sans-serif;
+}
+.btn {
+    background-color: #2a9d8f;
+    color: white;
+    margin-left: 5px;
+}
+
+p {
+    font-family: 'Quicksand', sans-serif;
+    font-weight: 300;
+}
+
+</style>
+
+    <h1> Travel Album </h1>
+
+<!--# Categories-->
+<div class="m-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+
+                <div class="card">
+                    <div class="card-header">Categories
+                    </div>
+
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <a href="{% url 'all' %}"> All pictures </a>
+                        </li>
+
+                            {% for category in categories %}
+                                <li class="list-group-item">
+                                    <a href="{% url 'all' %}?category={{ category.name }}">{{ category.name }}</a>
+                                </li>
+                            {% endfor %}
+
+                        <a href="{% url 'add_photo' %}" class="btn btn-primary">Add Picture</a>
+
+                    </ul>
+                </div>
+            </div>
+
+<!--# Tiles -->
+        <div class="col-md-9">
+            <div class="row">
+                {% for image in images %}
+                   <div class="col-md-4">
+                       <div class="card my-2">
+                               <img src="{{ image.image.url }}"
+                               alt="Hidden">
+                              <div class="card-body">
+                                  <small>Category: {{ image.category.name }}</small>
+                              </div>
+                                <p class="card-text">{{ image.description }}</p>
+                                <a href="{% url 'view_photo' image.id %}" class="btn btn-primary">View</a>
+                                <a href="{% url 'delete_photo' image.id %}" class="btn btn-primary">Delete</a>
+                            </div>
+                        </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+{% endblock %}
+</body>
+</html>

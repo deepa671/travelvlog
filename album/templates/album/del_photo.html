@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+
+h5 {
+    font-family: 'Comfortaa', cursive;
+    font-size: 65px;
+    padding: 70px;
+}
+
+.btn {
+    font-size: 40px;
+    background-color: #2a9d8f;
+    color: white;
+}
+.photo-deletion {
+    padding: 20px;
+}
+</style>
+
+<h5> Are you sure you want to delete? </h5>
+
+<div class="container">
+    <div class="photo-deletion">
+    <form method="post" action="{% url 'delete_photo' image.id %}">
+        {% csrf_token %}
+        <input type="submit" class="btn btn-primary" value="Yes">
+        <a href="{% url 'all' %}" class="btn btn-primary">No</a>
+
+    </form>
+    </div>
+</div>
+
+{% endblock %}
+
+</body>
+</html>
